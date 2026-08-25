@@ -1,0 +1,12 @@
+{
+  "name": "KartStats Telemetria",
+  "short_name": "KartStats",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#07090d",
+  "theme_color": "#0d1016",
+  "description": "Análise estatística de karts de aluguel",
+  "icons": [
+    {"src":"assets/kartstats-logo.png","sizes":"716x716","type":"image/png","purpose":"any maskable"}
+  ]
+}
