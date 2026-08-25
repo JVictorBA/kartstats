@@ -7,3 +7,5 @@
 .drop{display:block;width:100%;min-height:118px;padding:30px 18px;cursor:pointer;background:#10151d}.drop b{font-size:13px}.drop:hover{border-color:var(--orange);background:#151b24}
 /* V3.2 UI polish */
 .card,.kartcard,.stat{position:relative;overflow:hidden}.kartcard.green,.stat.green{border-top:3px solid var(--green)}.kartcard.yellow,.stat.yellow{border-top:3px solid var(--yellow)}.kartcard.red,.stat.red{border-top:3px solid var(--red)}.stat.purple{border-top:3px solid var(--purple)}.menu-toggle{display:none;background:none;color:var(--text);font-size:24px;padding:2px 8px}@media(max-width:760px){.side{position:fixed;z-index:10;left:-220px;top:0;height:100vh;width:220px;transition:left .2s}.side.open{left:0}.menu-toggle{display:block}.top{gap:8px}.main{width:100%}}
+/* V3.3 layout */
+html,body,#app{min-height:100%;height:100%}.side{position:fixed;left:0;top:0;bottom:0;height:100vh;overflow:auto}.main{margin-left:162px;min-height:100vh}.top{position:sticky;top:0;z-index:4;background:#0d1016}.content{min-height:calc(100vh - 52px)}@media(max-width:760px){.side{left:-220px}.main{margin-left:0}.side.open{left:0}}
