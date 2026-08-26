@@ -19,3 +19,29 @@ html,body{overflow-x:hidden}.tablewrap{display:block;width:100%;max-width:100%;o
 .best-time{position:relative;cursor:help}.pilot-pop{position:fixed;z-index:30;background:#171d27;border:1px solid var(--purple);box-shadow:0 8px 28px #0008;border-radius:8px;padding:12px 14px;color:var(--text);min-width:210px}.pilot-pop b{display:block;color:var(--purple);margin-bottom:5px}.pilot-pop small{color:var(--muted)}
 .detail-card{margin:12px 0;background:#171d27;border:1px solid var(--purple);border-left:4px solid var(--purple);border-radius:8px;padding:14px}.detail-card h3{margin:0 0 10px;color:var(--purple)}.detail-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.detail-grid span{display:block;color:var(--muted);font-size:10px;text-transform:uppercase}.detail-grid b{display:block;margin-top:3px}@media(max-width:760px){.detail-grid{grid-template-columns:1fr 1fr}}
 @media print{.side,.top,.filters,.actions .btn,.iconbtn{display:none!important}.main{margin:0}.content{padding:10px;background:white;color:#111}.card,.kartcard,.stat{background:white;color:#111;border-color:#bbb}.table th,.muted,.meta{color:#555}.table td{color:#111}}
+/* V5.2 - impressão completa e legível: a tabela não herda a rolagem do celular */
+@page{size:A4 landscape;margin:10mm}
+@media print{
+  html,body,#app{height:auto!important;min-height:0!important;overflow:visible!important;background:#fff!important;color:#111!important}
+  .side,.top,.menu-toggle,.filters,.legend,.actions .btn,.export-actions,.iconbtn,.detail-card,.pilot-pop{display:none!important}
+  .main{margin:0!important;width:100%!important;min-height:0!important}
+  .content{padding:0!important;max-width:none!important;background:#fff!important;color:#111!important}
+  .actions{display:block!important;margin:0 0 8px!important}
+  .actions h2{display:block!important;color:#111!important;font-size:16pt!important;margin:0 0 3px!important}
+  .actions p{display:block!important;color:#555!important;font-size:9pt!important}
+  .card,.tablewrap,.card:has(> .table){display:block!important;overflow:visible!important;width:100%!important;max-width:none!important;height:auto!important;max-height:none!important;min-height:0!important;padding:0!important;margin:0!important;background:#fff!important;border:1px solid #aaa!important;color:#111!important}
+  .tablewrap::after{display:none!important}
+  .table{display:table!important;width:100%!important;min-width:0!important;table-layout:auto!important;border-collapse:collapse!important;font-size:8pt!important;color:#111!important}
+  .table thead{display:table-header-group!important}
+  .table tr{break-inside:avoid!important;page-break-inside:avoid!important}
+  .table th{background:#eee!important;color:#222!important;font-size:7pt!important;padding:5px 6px!important;border-bottom:1px solid #555!important;white-space:nowrap!important}
+  .table td{color:#111!important;padding:5px 6px!important;border-bottom:1px solid #ccc!important;white-space:normal!important;line-height:1.2!important}
+  .table td.green,.table td.yellow,.table td.red,.table td.purple,.table .green,.table .yellow,.table .red,.table .purple{color:#111!important}
+  .kart{border:1px solid #555!important;color:#111!important;padding:2px 5px!important}
+  .status{color:#111!important;font-size:8pt!important}
+  .stats{display:grid!important;grid-template-columns:repeat(4,1fr)!important;gap:5px!important;margin:0 0 8px!important}
+  .stat{display:block!important;padding:6px!important;border:1px solid #aaa!important;border-top:2px solid #555!important}
+  .stat b{font-size:13pt!important;color:#111!important}
+  .stat small{font-size:7pt!important;color:#555!important}
+  a{color:#111!important;text-decoration:none!important}
+}
