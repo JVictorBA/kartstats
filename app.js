@@ -267,3 +267,50 @@ render();
 const renderWithoutLeaderCaption=render;
 render=function(){renderWithoutLeaderCaption();if(page==='dashboard')document.querySelectorAll('.content .delta-label').forEach(el=>el.textContent=el.textContent.replace(/\s*vs\s+líder\s*/i,'' ).trim())};
 render();
+/* V7.2 — reconhece relatórios Timing Oficial pelas coordenadas das colunas (POS/#/Nome/MV/TMV). */
+function normPdfHeader(value){return String(value||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toUpperCase().trim()}
+function parseTimingOfficialPage(textContent){
+  let items=(textContent.items||[]).map(it=>({x:Number(it.transform?.[4]||0),y:Number(it.transform?.[5]||0),text:String(it.str||'').trim()})).filter(it=>it.text).sort((a,b)=>b.y-a.y),groups=[];
+  for(let it of items){let group=groups.find(g=>Math.abs(g.y-it.y)<=2.2);if(!group)groups.push({y:it.y,items:[it]});else{group.items.push(it);group.y=group.items.reduce((sum,x)=>sum+x.y,0)/group.items.length}}
+  let header=null;for(let group of groups){let txt=group.items.map(x=>x.text).join(' ').toUpperCase();if(/\bPOS\b/.test(txt)&&txt.includes('#')&&/\bNOME\b/.test(txt)&&/\bMV\b/.test(txt)&&/\bTMV\b/.test(txt)){header=group;break}}
+  if(!header)return null;
+  let anchor=label=>header.items.find(x=>normPdfHeader(x.text)===label)?.x;
+  let xKart=anchor('#'),xName=anchor('NOME'),xMv=anchor('MV'),xTmv=anchor('TMV'),xTt=anchor('TT');
+  if([xKart,xName,xMv,xTmv,xTt].some(x=>!Number.isFinite(x)))return null;
+  let lowLap=(xMv+xTmv)/2,highLap=(xTmv+xTt)/2,rows=[];
+  for(let group of groups){
+    if(group.y>=header.y)continue;
+    let line=group.items,kartItem=line.filter(x=>x.x>=xKart-9&&x.x<xName-2&&/^\d{1,3}$/.test(x.text)).sort((a,b)=>Math.abs(a.x-xKart)-Math.abs(b.x-xKart))[0];
+    let lapItem=line.find(x=>x.x>=lowLap-5&&x.x<highLap&&/^\d{1,2}:\d{2}[.,]\d{3}$/.test(x.text));
+    if(!kartItem||!lapItem)continue;
+    let pilot=line.filter(x=>x.x>=xName-3&&x.x<xMv-3).sort((a,b)=>a.x-b.x).map(x=>x.text).join(' ').replace(/\s+/g,' ').trim();
+    let best=importTime(lapItem.text);if(!pilot||!Number.isFinite(best)||best<10||best>300)continue;
+    rows.push({kart:Number(kartItem.text),pilot,best,registered:false,review:false});
+  }
+  return rows;
+}
+function parseTimingOfficialText(text){
+  let lines=String(text||'').split(/\r?\n/),headerAt=lines.findIndex(line=>{let n=normPdfHeader(line);return /\bPOS\b/.test(n)&&n.includes('#')&&/\bNOME\b/.test(n)&&/\bMV\b/.test(n)&&/\bTMV\b/.test(n)});
+  if(headerAt<0)return null;let out=[];
+  for(let line of lines.slice(headerAt+1)){let tokens=timeTokens(line);if(!tokens.length)continue;let firstTime=tokens[0],prefix=line.slice(0,firstTime.index),m=prefix.match(/^\s*(?:NC|\d+)\s+#?(\d{1,3})\s+(.+?)\s+(\d{1,3})\s*$/i);if(!m)continue;let kart=Number(m[1]),pilot=m[2].trim().replace(/\s+/g,' '),best=firstTime.time;if(!kart||!pilot||best<10||best>300)continue;out.push({kart,pilot,best,registered:false,review:true})}
+  return out;
+}
+const readImportFileBeforeTimingFix=readImportFile;
+readImportFile=async function(file){
+  let name=String(file.name||'').toLowerCase(),type=file.type||'';
+  if(!(/\.pdf$/.test(name)||type==='application/pdf'))return readImportFileBeforeTimingFix(file);
+  if(!window.pdfjsLib)return readImportFileBeforeTimingFix(file);
+  pdfjsLib.GlobalWorkerOptions.workerSrc='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+  let pdf=await pdfjsLib.getDocument({data:await file.arrayBuffer()}).promise,structured=[],fallbackText='',recognized=false;
+  for(let p=1;p<=pdf.numPages;p++){
+    let pg=await pdf.getPage(p),tc=await pg.getTextContent(),rows=parseTimingOfficialPage(tc);
+    if(rows!==null){recognized=true;structured.push(...rows);continue}
+    let groups={};for(let it of tc.items){let y=Math.round(it.transform[5]);(groups[y]??=[]).push({x:it.transform[4],s:it.str})}
+    let pageText=Object.keys(groups).sort((a,b)=>b-a).map(y=>groups[y].sort((a,b)=>a.x-b.x).map(x=>x.s).join(' ')).join('\n');
+    if(pageText.replace(/\s/g,'').length<40){let vp=pg.getViewport({scale:2.5}),canvas=document.createElement('canvas');canvas.width=vp.width;canvas.height=vp.height;await pg.render({canvasContext:canvas.getContext('2d'),viewport:vp}).promise;if(!window.Tesseract)throw Error('O OCR não carregou; verifique a internet.');let o=await Tesseract.recognize(canvas,'eng',{logger:m=>{let el=$('#importmsg');if(el&&m.status==='recognizing text')el.textContent=`Lendo página ${p}/${pdf.numPages}: ${Math.round((m.progress||0)*100)}%`}});pageText=o.data.text}
+    let textRows=parseTimingOfficialText(pageText);if(textRows!==null){recognized=true;structured.push(...textRows)}else fallbackText+=pageText+'\n';
+  }
+  if(recognized&&structured.length)return structured;
+  if(recognized)return [];
+  return readImportFileBeforeTimingFix(file);
+};
