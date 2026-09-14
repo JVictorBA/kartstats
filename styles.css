@@ -45,3 +45,167 @@ html,body{overflow-x:hidden}.tablewrap{display:block;width:100%;max-width:100%;o
   .stat small{font-size:7pt!important;color:#555!important}
   a{color:#111!important;text-decoration:none!important}
 }
+/* V5.3 — telemetria inspirada nos prints, mantendo a identidade KartStats. */
+.telemetry-metrics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:0 0 12px}
+.telemetry-metric,.best3-strip{background:var(--panel);border:1px solid var(--line);border-radius:9px;padding:12px}
+.telemetry-metric{display:flex;flex-direction:column;gap:4px;border-top:2px solid var(--blue)}
+.telemetry-metric small,.best3-heading small{color:var(--muted);font-size:9px;letter-spacing:.6px;text-transform:uppercase}
+.telemetry-metric b{font-size:20px;font-variant-numeric:tabular-nums;color:#fff}
+.telemetry-metric span{font-size:10px;color:var(--muted)}
+.best3-strip{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px;margin-bottom:12px}
+.best3-heading{grid-column:1/-1;display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+.best3-item{display:grid;grid-template-columns:24px 1fr;align-items:center;gap:2px 8px;background:var(--panel2);border:1px solid var(--line);border-radius:7px;padding:9px}
+.best3-position{grid-row:span 2;display:grid;place-items:center;width:22px;height:22px;border-radius:6px;background:#282038;color:var(--purple);font-weight:800}
+.best3-item strong,.best3-item small{grid-column:2}.best3-item strong{font-variant-numeric:tabular-nums}.best3-item small{color:var(--muted);font-size:9px}
+.telemetry-table{min-width:1120px!important}.top3-cell{min-width:280px}.toplap{display:grid;grid-template-columns:20px 72px minmax(100px,1fr);gap:5px;align-items:center;padding:2px 0;font-size:10px}.toplap span{color:var(--muted)}.toplap b{font-variant-numeric:tabular-nums}.toplap small{color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.delta-label,.variation-label{display:block;font-size:9px;margin-top:3px;color:var(--muted)}
+.import-drop{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px}.import-drop span{font-size:11px}.import-destination{max-width:560px;margin:12px 0}.import-preview{padding:10px}.import-preview .table{min-width:720px}.import-edit{width:100%;min-width:85px;background:#0e1219;color:var(--text);border:1px solid var(--line);border-radius:5px;padding:7px}.import-review{display:block;color:var(--yellow);font-size:9px;margin:4px 0}.import-result{margin:10px 0;color:var(--green)}.import-result span{color:var(--muted)}.import-warning{margin:8px 0;color:var(--yellow)}
+@media(max-width:760px){.telemetry-metrics{grid-template-columns:1fr 1fr}.telemetry-metric:last-child{grid-column:1/-1}.best3-strip{grid-template-columns:1fr}.best3-heading{align-items:flex-start;flex-direction:column}.best3-item{min-height:58px}}
+@media print{.telemetry-metrics{grid-template-columns:repeat(3,1fr)!important}.best3-strip{grid-template-columns:repeat(3,1fr)!important}.telemetry-table{min-width:0!important;font-size:7pt!important}.top3-cell{min-width:0!important}.toplap{grid-template-columns:14px 50px 1fr!important;font-size:6pt!important}.delta-label,.variation-label{font-size:6pt!important}.import-drop,.import-preview{break-inside:avoid}}
+/* V5.4 — controles de senha da autenticação */
+.auth-screen{min-height:100vh;display:grid;place-items:center;padding:20px;background:#07090d}
+.auth-box{width:min(420px,100%);text-align:center;padding:20px}
+.auth-brand{margin:0 0 18px}.auth-brand img{width:64px;height:64px;object-fit:contain}.auth-brand h2{margin:8px 0 4px}
+.auth-box .field{text-align:left;margin:10px 0}.password-wrap{position:relative}.password-wrap input{padding-right:48px!important}.password-toggle{position:absolute;right:5px;top:50%;transform:translateY(-50%);min-width:36px;min-height:36px;padding:6px;background:transparent;color:#aab6c8;border-radius:5px;font-size:18px}.password-toggle:hover,.password-toggle:focus-visible{color:var(--orange);background:#232936;outline:2px solid var(--orange);outline-offset:1px}.auth-action{display:block;width:100%;margin-top:9px}
+/* V5.5 — acabamento vermelho/preto e alinhamento do dashboard. */
+:root{--bg:#050607;--panel:#111318;--panel2:#0b0d10;--line:#292c33;--muted:#929baa;--text:#f4f5f7;--orange:#ff344c;--red:#ff344c;--green:#00d77a;--yellow:#f5c528;--purple:#b650ff}
+.side{width:194px;padding:18px 10px}.main{margin-left:194px}.brand{display:flex;align-items:center;gap:9px;padding:0 5px 22px;font-size:15px;line-height:1.1}.brand img{width:28px!important;height:28px!important;object-fit:contain;flex:none;margin:0!important}.brand-title{display:block}.brand small{margin:4px 0 0!important;font-size:8px!important;letter-spacing:1.7px}.nav button{display:flex;align-items:center;gap:9px;min-height:38px;white-space:nowrap;font-size:13px;padding:9px 8px}.nav button span{width:18px;flex:none;text-align:center}.nav button.active{background:#301116;color:#ff5669;box-shadow:inset 3px 0 #ff344c}.top{height:58px;min-height:58px;align-items:center;padding:0 18px}.top-logo{display:none!important}.top h1{font-size:15px;line-height:1.2;margin:0}.top p{font-size:10px;line-height:1.25;margin:3px 0 0}.top>div{min-width:0}.logout{margin-left:auto}
+.category-stats .stat{padding:11px 12px}.category-stats .stat small:first-child{font-weight:800;color:currentColor;letter-spacing:.45px}.stat.purple{border-top-color:var(--purple);color:var(--purple)}.stat.green{border-top-color:var(--green);color:var(--green)}.stat.yellow{border-top-color:var(--yellow);color:var(--yellow)}.stat.red{border-top-color:var(--red);color:var(--red)}.category-legend{display:flex;flex-wrap:wrap;gap:8px 18px;margin:-3px 2px 4px;font-size:11px}.category-legend span{font-weight:700}
+.telemetry-table{min-width:1020px!important}.telemetry-table th{white-space:normal;line-height:1.25;vertical-align:bottom}.telemetry-table td{vertical-align:middle}.telemetry-table td:nth-child(2){white-space:nowrap}.primary-metric b{font-size:15px;font-variant-numeric:tabular-nums}.category-pill{display:inline-flex;align-items:center;justify-content:center;vertical-align:middle;width:20px;height:20px;margin-left:6px;border-radius:6px;background:#17191e;border:1px solid currentColor;font-size:10px;font-weight:900;line-height:1}.category-pill.purple{background:#271338;color:var(--purple)!important}.category-pill.green{background:#08251a;color:var(--green)!important}.category-pill.yellow{background:#2a2208;color:var(--yellow)!important}.category-pill.red{background:#321018;color:var(--red)!important}.best3-item{border-left:3px solid var(--line)}.best3-item.purple{border-left-color:var(--purple)}.best3-item.green{border-left-color:var(--green)}.best3-item.yellow{border-left-color:var(--yellow)}.best3-item.red{border-left-color:var(--red)}.best3-item strong{font-size:14px}.best3-position{font-size:12px}
+@media(max-width:760px){.side{width:220px;padding:16px 10px}.main{margin-left:0}.nav button{font-size:14px;white-space:normal}.category-stats{grid-template-columns:1fr 1fr}.telemetry-table{min-width:1020px!important}.top3-cell{min-width:290px}}
+@media print{.side{display:none!important}.main{margin-left:0!important}.top-logo{display:none!important}.telemetry-table{min-width:0!important}}
+/* V5.6 — faixa superior do dashboard mais minimalista, inspirada no painel de telemetria. */
+.content>.actions{margin:2px 0 10px;align-items:center}.content>.actions h2{font-size:18px;letter-spacing:-.25px}.content>.actions p{font-size:11px;margin-top:2px}.content>.actions .btn{padding:8px 12px;min-height:34px;font-size:11px}
+.content>.stats{display:none!important}
+.content>.telemetry-metrics{display:flex;gap:0;align-items:stretch;margin:0 0 8px;padding:7px 10px;background:#111318;border:1px solid #292c33;border-radius:8px}
+.content>.telemetry-metrics .telemetry-metric{flex:1;min-width:0;padding:2px 12px;border:0;border-right:1px solid #292c33;background:transparent;box-shadow:none}
+.content>.telemetry-metrics .telemetry-metric:first-child{padding-left:2px}.content>.telemetry-metrics .telemetry-metric:last-child{border:0}
+.content>.telemetry-metrics .telemetry-metric small{font-size:8px;letter-spacing:.8px}.content>.telemetry-metrics .telemetry-metric b{display:inline-block;margin:3px 7px 0 0;font-size:14px}.content>.telemetry-metrics .telemetry-metric span{display:inline;font-size:9px;color:var(--muted)}
+.content>.best3-strip{display:flex;align-items:center;gap:8px;margin:0 0 9px;padding:6px 9px;background:#111318;border:1px solid #292c33;border-radius:8px}
+.content>.best3-strip .best3-heading{flex:0 0 auto;display:block;margin:0 4px 0 0;padding:0;border:0}.content>.best3-strip .best3-heading b{font-size:10px}.content>.best3-strip .best3-heading small{display:none}
+.content>.best3-strip .best3-item{flex:1;min-height:0;display:grid;grid-template-columns:18px auto 1fr;align-items:center;gap:5px;padding:2px 8px;border:0;border-left:1px solid #292c33;background:transparent}
+.content>.best3-strip .best3-position{grid-row:auto;width:18px;height:18px;font-size:10px}.content>.best3-strip .best3-item>b{font-size:10px}.content>.best3-strip .best3-item strong{grid-column:auto;font-size:11px;text-align:right}.content>.best3-strip .best3-item small{display:none}
+.content>.filters{gap:8px;padding:9px;margin:0 0 9px}.content>.filters .field{gap:3px}.content>.filters label{font-size:9px;letter-spacing:.65px}.content>.filters select{min-height:32px;padding:6px 9px;font-size:11px}
+@media(max-width:760px){.content>.telemetry-metrics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));padding:6px}.content>.telemetry-metrics .telemetry-metric{padding:2px 7px}.content>.telemetry-metrics .telemetry-metric span{display:none}.content>.telemetry-metrics .telemetry-metric b{display:block;margin:3px 0 0;font-size:12px}.content>.best3-strip{flex-wrap:wrap;gap:4px}.content>.best3-strip .best3-heading{width:100%}.content>.best3-strip .best3-item{padding:2px 5px}.content>.best3-strip .best3-item>b{font-size:9px}.content>.best3-strip .best3-item strong{font-size:10px}.content>.actions .btn{white-space:nowrap}}
+@media print{.content>.stats{display:grid!important}.content>.telemetry-metrics,.content>.best3-strip,.content>.filters{display:revert}}
+/* V5.7 — botões amarelos e realce ativo coerente com o tema KartStats. */
+:root{--orange:#ffc21a}
+.btn:not(.ghost){background:#ffc21a!important;color:#17130a!important}.btn:not(.ghost):hover{background:#ffd34d!important}
+.nav button.active,.nav button:hover{background:#30250d!important;color:#ffd34d!important;box-shadow:inset 3px 0 #ffc21a!important}
+/* V5.8 — cartão compacto do kart e sequência limpa de tempos. */
+.telemetry-table td:nth-child(2){min-width:74px;text-align:center;white-space:nowrap}
+.kart-class-stack{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;min-width:56px}
+.kart-class-stack .category-pill{order:0;margin:0;width:19px;height:17px;border-radius:5px;font-size:9px}
+.kart-class-stack .kart{order:1;min-width:38px;padding:4px 7px;font-size:12px;line-height:1.1}
+.kart-class-stack .delta-label{order:2;margin:0;font-size:9px;white-space:nowrap;font-variant-numeric:tabular-nums}
+.toplap{grid-template-columns:72px minmax(130px,1fr)!important;gap:8px;align-items:center;padding:4px 2px;border-bottom:1px solid #292c33}
+.toplap b{font-size:12px;font-weight:800!important;white-space:nowrap}.toplap small{font-size:10px;font-weight:400!important;line-height:1.25}
+.top3-cell .variation-label{font-size:9px;margin-top:5px}
+@media(max-width:760px){.toplap{grid-template-columns:68px minmax(150px,1fr)!important;gap:6px}.toplap b{font-size:11px}.toplap small{font-size:10px}}
+/* V5.9 — somente o selo recebe a cor da categoria; leitura mais densa. */
+.kart-class-stack .kart{color:#f4f5f7!important;border-color:#596170!important;background:#15181e!important}
+.kart-class-stack .category-pill.purple{color:#d48aff!important;background:rgba(182,80,255,.16)!important;border-color:rgba(182,80,255,.62)!important}
+.kart-class-stack .category-pill.green{color:#00e889!important;background:rgba(0,215,122,.15)!important;border-color:rgba(0,215,122,.6)!important}
+.kart-class-stack .category-pill.yellow{color:#ffd84a!important;background:rgba(245,197,40,.15)!important;border-color:rgba(245,197,40,.58)!important}
+.kart-class-stack .category-pill.red{color:#ff6570!important;background:rgba(255,52,76,.15)!important;border-color:rgba(255,52,76,.58)!important}
+.telemetry-table td{padding-top:7px!important;padding-bottom:7px!important}.toplap{padding-top:2px!important;padding-bottom:2px!important;line-height:1.15}
+.top3-cell .variation-label{margin-top:3px!important}.kart-class-stack{gap:2px!important}
+/* V6.0 — tipografia compacta de telemetria, seguindo a referência enviada. */
+.telemetry-table .toplap b,.telemetry-table .primary-metric b,.telemetry-table .best-time b,.telemetry-table .delta-label,.telemetry-table .variation-label,.kart-class-stack .kart{font-family:ui-monospace,"SFMono-Regular",Consolas,"Liberation Mono",monospace;font-variant-numeric:tabular-nums}
+.telemetry-table .toplap small{font-family:"Arial Narrow","Roboto Condensed","Segoe UI",Arial,sans-serif;font-stretch:condensed;font-weight:400!important;letter-spacing:-.12px}
+/* V6.1 — número do kart maior e sem caixa, mantendo apenas o selo do tier. */
+.kart-class-stack .kart{min-width:0!important;padding:0!important;border:0!important;border-radius:0!important;background:transparent!important;color:#f4f5f7!important;font-family:ui-monospace,"SFMono-Regular",Consolas,"Liberation Mono",monospace!important;font-size:16px!important;font-weight:800!important;line-height:1.2!important}
+.kart-class-stack .category-pill{font-family:ui-monospace,"SFMono-Regular",Consolas,"Liberation Mono",monospace;font-weight:800;letter-spacing:0}
+.kart-class-stack .delta-label{font-family:ui-monospace,"SFMono-Regular",Consolas,"Liberation Mono",monospace!important;font-size:9px!important}
+/* V6.2 — alinhamento à esquerda e fonte sem serifa como na referência. */
+.telemetry-table th:nth-child(2),.telemetry-table td:nth-child(2),.telemetry-table th:nth-child(3),.telemetry-table td:nth-child(3){text-align:left!important}
+.kart-class-stack{align-items:flex-start!important;margin-left:8px}
+.kart-class-stack .kart,.kart-class-stack .delta-label,.telemetry-table td:nth-child(3) b,.telemetry-table td:nth-child(3) .delta-label{font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Arial,sans-serif!important;font-variant-numeric:tabular-nums;font-stretch:normal;letter-spacing:normal}
+.kart-class-stack .kart{font-size:16px!important}
+/* V6.3 — mudança tipográfica realmente visível nos dados do dashboard. */
+.content .telemetry-table .kart-class-stack .kart,
+.content .telemetry-table td:nth-child(3) b{font-family:Arial,Helvetica,sans-serif!important;font-size:17px!important;font-weight:700!important;letter-spacing:.15px!important}
+.content .telemetry-table .kart-class-stack .delta-label,
+.content .telemetry-table td:nth-child(3) .delta-label{font-family:Arial,Helvetica,sans-serif!important;font-size:10px!important;font-weight:400!important;letter-spacing:.1px!important}
+/* V6.4 — padroniza o desenho de todos os valores numéricos do dashboard. */
+.content .telemetry-table td:first-child,.content .telemetry-table .kart-class-stack .kart,.content .telemetry-table .kart-class-stack .delta-label,.content .telemetry-table td:nth-child(3) b,.content .telemetry-table td:nth-child(3) .delta-label,.content .telemetry-table .toplap b,.content .telemetry-table .variation-label,.content>.telemetry-metrics b,.content>.best3-strip .best3-position,.content>.best3-strip .best3-item strong{font-family:Arial,Helvetica,sans-serif!important;font-weight:700!important;font-variant-numeric:tabular-nums!important;letter-spacing:normal!important}
+.content .telemetry-table .kart-class-stack .delta-label,.content .telemetry-table td:nth-child(3) .delta-label,.content .telemetry-table .variation-label{font-size:10px!important}
+/* V6.5 — tipografia condensada em todo o app, alinhada ao exemplo Cameron Das. */
+body,button,input,select,textarea{font-family:"Roboto Condensed","Arial Narrow","Liberation Sans Narrow",Arial,sans-serif!important}
+.content .telemetry-table td:first-child,.content .telemetry-table .kart-class-stack .kart,.content .telemetry-table .kart-class-stack .delta-label,.content .telemetry-table td:nth-child(3) b,.content .telemetry-table td:nth-child(3) .delta-label,.content .telemetry-table .toplap b,.content .telemetry-table .variation-label,.content>.telemetry-metrics b,.content>.best3-strip .best3-position,.content>.best3-strip .best3-item strong{font-family:"Roboto Condensed","Arial Narrow","Liberation Sans Narrow",Arial,sans-serif!important}
+/* V6.6 — restaura nos números o estilo Arial da versão 6.3; textos seguem condensados. */
+.content .telemetry-table td:first-child,.content .telemetry-table .kart-class-stack .kart,.content .telemetry-table td:nth-child(3) b,.content .telemetry-table .toplap b,.content .telemetry-table .variation-label,.content>.telemetry-metrics b,.content>.best3-strip .best3-position,.content>.best3-strip .best3-item strong{font-family:Arial,Helvetica,sans-serif!important;font-variant-numeric:tabular-nums!important;font-weight:700!important;letter-spacing:.15px!important}
+.content .telemetry-table .kart-class-stack .kart,.content .telemetry-table td:nth-child(3) b{font-size:17px!important}
+.content .telemetry-table .kart-class-stack .delta-label,.content .telemetry-table td:nth-child(3) .delta-label{font-family:Arial,Helvetica,sans-serif!important;font-size:10px!important;font-weight:400!important;letter-spacing:.1px!important}
+/* V6.7 — POS/KART em Inter; tempos, diferenças e métricas em fonte mono. */
+.content .telemetry-table td:first-child,.content .telemetry-table .kart-class-stack .kart{font-family:Inter,"SF Pro Text","SF Pro Display",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif!important;font-variant-numeric:tabular-nums!important}
+.content .telemetry-table td:nth-child(3) b,.content .telemetry-table td:nth-child(3) .delta-label,.content .telemetry-table .kart-class-stack .delta-label,.content .telemetry-table .toplap b,.content .telemetry-table .variation-label,.content>.telemetry-metrics b,.content>.best3-strip .best3-position,.content>.best3-strip .best3-item strong{font-family:"SF Mono","Roboto Mono","JetBrains Mono",ui-monospace,SFMono-Regular,Consolas,monospace!important;font-variant-numeric:tabular-nums!important;letter-spacing:normal!important}
+/* V6.8 — visual HUD/telemetria de corrida inspirado na referência. */
+:root{--bg:#05070a;--panel:#0d1117;--panel2:#090d12;--line:#26313b;--muted:#8c9aa8;--text:#f0f5f7;--orange:#d9e1e8;--green:#45f17b;--red:#fa394d;--blue:#53c9ff}
+body{background:radial-gradient(ellipse at 50% -25%,#10202a 0%,#080c11 50%,#05070a 100%);color:var(--text)}
+.side{background:#080b10;border-color:#202b34}.brand{border-bottom:1px solid #202b34}.nav button.active,.nav button:hover{background:linear-gradient(90deg,#10321d,#10191a)!important;color:#70ff96!important;box-shadow:inset 3px 0 #45f17b!important}
+.top{background:rgba(7,11,15,.96);border-bottom:1px solid #27323b}.top h1{letter-spacing:.5px;text-transform:uppercase}.content{max-width:1700px}
+.content>.actions{position:relative;min-height:54px;margin:0 0 8px;padding:8px 12px;background:linear-gradient(90deg,rgba(39,241,111,.10),#0c1117 22%,#0c1117 78%,rgba(250,57,77,.10));border:1px solid #26313b;border-left:4px solid #45f17b;border-right:4px solid #fa394d;border-radius:2px}
+.content>.actions h2{font-size:16px;font-weight:800;letter-spacing:.7px;text-transform:uppercase}.content>.actions p{font-size:10px;letter-spacing:.25px}
+.btn:not(.ghost){background:#45f17b!important;color:#06120a!important;border-radius:2px;font-weight:800;text-transform:uppercase;letter-spacing:.25px}.btn:not(.ghost):hover{background:#8affaa!important}
+.btn.ghost{border-radius:2px;border-color:#34414c}.content>.stats{border-radius:2px}
+.content>.telemetry-metrics{position:relative;margin:0 0 7px;padding:0 8px;background:#0a0f14;border:1px solid #29343e;border-radius:2px;box-shadow:inset 0 1px #ffffff08}
+.content>.telemetry-metrics .telemetry-metric{padding:7px 12px;border-right:1px solid #29343e}.content>.telemetry-metrics .telemetry-metric small{color:#92a5b1;font-size:8px;letter-spacing:1px;text-transform:uppercase}.content>.telemetry-metrics .telemetry-metric b{color:#f1f6f7;font-size:14px}
+.content>.best3-strip{margin-bottom:7px;padding:5px 8px;background:#0a0f14;border:1px solid #29343e;border-radius:2px}.content>.best3-strip .best3-heading b{color:#a9bdc7;text-transform:uppercase;letter-spacing:.45px}.content>.best3-strip .best3-position{background:#10291b;color:#70ff96;border-radius:2px}
+.content>.filters,.content>.card.tablewrap{background:#0b1016;border-color:#29343e;border-radius:2px}.content>.filters{padding:8px}.content>.filters select{background:#080c11;border-color:#2b3742;border-radius:2px}.content>.filters label{color:#93a5b2}
+.telemetry-table{border-collapse:separate;border-spacing:0}.telemetry-table th{background:#0b1016;color:#93a5b2;border-bottom-color:#34414b;text-transform:uppercase;letter-spacing:.9px}.telemetry-table td{border-bottom:1px solid #222e37;background:#0d1218}.telemetry-table tbody tr:hover td{background:#131c22}.telemetry-table .kart-class-stack .category-pill{border-radius:2px!important}
+.content>.card.tablewrap{padding:5px}.card,.stat,.kartcard,.modalbox{border-radius:3px}
+/* Manter exatamente as fontes numéricas escolhidas: Inter em POS/KART, mono no restante. */
+.content .telemetry-table td:first-child,.content .telemetry-table .kart-class-stack .kart{font-family:Inter,"SF Pro Text","SF Pro Display",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif!important}
+.content .telemetry-table td:nth-child(3) b,.content .telemetry-table td:nth-child(3) .delta-label,.content .telemetry-table .kart-class-stack .delta-label,.content .telemetry-table .toplap b,.content .telemetry-table .variation-label,.content>.telemetry-metrics b,.content>.best3-strip .best3-position,.content>.best3-strip .best3-item strong{font-family:"SF Mono","Roboto Mono","JetBrains Mono",ui-monospace,SFMono-Regular,Consolas,monospace!important}
+@media(max-width:760px){.content>.actions{min-height:48px;padding:7px 9px}.content>.telemetry-metrics{padding:3px}.content>.telemetry-metrics .telemetry-metric{padding:5px 7px}.content>.telemetry-metrics .telemetry-metric small{font-size:7px}.content>.telemetry-metrics .telemetry-metric b{font-size:12px}.content>.filters{gap:6px}.telemetry-table td{padding:6px 8px!important}}
+/* V6.9 — preto profundo + superfícies pretas translúcidas em degradê; CTA amarelo. */
+:root{--bg:#020303;--panel:#080a09;--panel2:#050706;--line:rgba(174,255,203,.12);--muted:#a7b3aa;--text:#f5f8f5;--orange:#ffc21a}
+body{background:radial-gradient(ellipse at 50% -25%,rgba(33,105,57,.19),transparent 46%),linear-gradient(145deg,#010202 0%,#050806 48%,#020303 100%);color:#f5f8f5}
+.side,.top{background:linear-gradient(180deg,rgba(10,14,11,.96),rgba(2,3,3,.92));border-color:rgba(100,235,143,.12)}
+.content>.actions{background:linear-gradient(105deg,rgba(24,111,53,.18) 0%,rgba(5,8,6,.93) 28%,rgba(5,7,6,.92) 72%,rgba(132,18,32,.17) 100%);border-color:rgba(207,255,220,.12);border-left-color:#45f17b;border-right-color:#fa394d;box-shadow:0 8px 25px rgba(0,0,0,.35),inset 0 1px rgba(255,255,255,.035)}
+.content>.telemetry-metrics,.content>.best3-strip{background:linear-gradient(120deg,rgba(255,255,255,.045),rgba(7,11,8,.92) 28%,rgba(2,3,3,.82));border-color:rgba(193,255,209,.12);box-shadow:inset 0 1px rgba(255,255,255,.035),0 5px 18px rgba(0,0,0,.28)}
+.content>.telemetry-metrics .telemetry-metric{border-color:rgba(194,255,211,.11)}
+.content>.filters,.content>.card.tablewrap{background:linear-gradient(145deg,rgba(255,255,255,.035),rgba(7,10,8,.95) 24%,rgba(2,3,3,.92));border-color:rgba(183,255,202,.12);box-shadow:0 7px 22px rgba(0,0,0,.3),inset 0 1px rgba(255,255,255,.025)}
+.content>.filters select{background:linear-gradient(120deg,rgba(255,255,255,.04),rgba(0,0,0,.85));border-color:rgba(202,255,215,.15);color:#f4f7f4}
+.telemetry-table th{background:linear-gradient(90deg,rgba(24,80,42,.19),rgba(4,6,5,.95) 45%);color:#bfcdc2;border-bottom-color:rgba(205,255,218,.17)}
+.telemetry-table td{background:rgba(5,8,6,.68);border-bottom-color:rgba(191,255,208,.09)}.telemetry-table tbody tr:hover td{background:linear-gradient(90deg,rgba(34,133,64,.12),rgba(6,9,7,.94))}
+.btn:not(.ghost){background:#ffc21a!important;color:#171106!important;box-shadow:0 0 14px rgba(255,194,26,.18);border:1px solid rgba(255,222,124,.45)}.btn:not(.ghost):hover{background:#ffd34d!important;box-shadow:0 0 18px rgba(255,194,26,.3)}
+.btn.ghost{background:linear-gradient(130deg,rgba(255,255,255,.055),rgba(0,0,0,.68));color:#eef4ef;border-color:rgba(216,255,224,.17)}
+/* V7.0 — dashboard sem rolagem horizontal em celular. */
+@media(max-width:760px){
+  html,body{max-width:100%;overflow-x:hidden}
+  .main{width:100%;min-width:0;overflow-x:hidden}
+  .content{width:100%;max-width:100%;min-width:0;padding:8px}
+  .content>.actions{width:100%;flex-wrap:wrap;gap:6px}
+  .content>.actions>div:first-child{min-width:0;flex:1 1 120px}
+  .content>.actions .btn{font-size:9px;padding:7px 8px;white-space:nowrap}
+  .content>.actions .export-actions{display:flex;flex-wrap:wrap;gap:4px;margin-left:auto}
+  .content>.actions .export-actions .btn{margin:0}
+  .content>.filters{width:100%;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px;padding:7px}
+  .content>.filters .field,.content>.filters .field:first-child{grid-column:auto;min-width:0}
+  .content>.filters select{min-width:0;width:100%;padding:7px 6px;font-size:10px}
+  .content>.card.tablewrap{width:100%;max-width:100%;min-width:0;overflow-x:hidden;padding:3px}
+  .content>.card.tablewrap>.telemetry-table{width:100%!important;min-width:0!important;table-layout:fixed!important;border-spacing:0}
+  .content>.card.tablewrap>.telemetry-table th,.content>.card.tablewrap>.telemetry-table td{padding:6px 3px!important;overflow:hidden}
+  .content>.card.tablewrap>.telemetry-table th{font-size:7px;letter-spacing:.25px;overflow-wrap:anywhere}
+  .content>.card.tablewrap>.telemetry-table th:nth-child(1),.content>.card.tablewrap>.telemetry-table td:nth-child(1){width:7%;text-align:center!important}
+  .content>.card.tablewrap>.telemetry-table th:nth-child(2),.content>.card.tablewrap>.telemetry-table td:nth-child(2){width:15%;min-width:0;text-align:left!important}
+  .content>.card.tablewrap>.telemetry-table th:nth-child(3),.content>.card.tablewrap>.telemetry-table td:nth-child(3){width:22%;text-align:left!important}
+  .content>.card.tablewrap>.telemetry-table th:nth-child(4),.content>.card.tablewrap>.telemetry-table td:nth-child(4){width:56%;}
+  .kart-class-stack{min-width:0;margin-left:1px!important;gap:2px!important}
+  .kart-class-stack .category-pill{width:17px;height:15px;font-size:8px}
+  .content .telemetry-table .kart-class-stack .kart{font-size:14px!important}
+  .content .telemetry-table .kart-class-stack .delta-label{font-size:8px!important;white-space:normal}
+  .content .telemetry-table td:nth-child(3) b{font-size:11px!important;white-space:nowrap}
+  .content .telemetry-table td:nth-child(3) .delta-label{font-size:8px!important;white-space:normal}
+  .top3-cell{min-width:0!important;width:auto}
+  .toplap{grid-template-columns:52px minmax(0,1fr)!important;gap:4px!important;min-width:0;padding:3px 0!important}
+  .content .telemetry-table .toplap b{font-size:9px!important;white-space:nowrap}
+  .content .telemetry-table .toplap small{font-size:8px!important;white-space:normal!important;overflow-wrap:anywhere;line-height:1.15}
+  .content .telemetry-table .variation-label{font-size:7px!important;white-space:normal}
+}
+@media(max-width:360px){.content{padding:5px}.content>.card.tablewrap>.telemetry-table th,.content>.card.tablewrap>.telemetry-table td{padding-left:2px!important;padding-right:2px!important}.content>.card.tablewrap>.telemetry-table th:nth-child(1),.content>.card.tablewrap>.telemetry-table td:nth-child(1){width:6%}.content>.card.tablewrap>.telemetry-table th:nth-child(2),.content>.card.tablewrap>.telemetry-table td:nth-child(2){width:14%}.content>.card.tablewrap>.telemetry-table th:nth-child(3),.content>.card.tablewrap>.telemetry-table td:nth-child(3){width:21%}.content>.card.tablewrap>.telemetry-table th:nth-child(4),.content>.card.tablewrap>.telemetry-table td:nth-child(4){width:59%}.toplap{grid-template-columns:47px minmax(0,1fr)!important;gap:3px!important}}
+/* V7.1 — menus de seleção escuros, sem lista branca em desktop. */
+select{color-scheme:dark}
+select option,select optgroup{background:#050807!important;color:#f4f7f4!important}
+select option:checked{background:#174a2a!important;color:#ffffff!important}
