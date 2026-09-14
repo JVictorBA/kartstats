@@ -314,3 +314,7 @@ readImportFile=async function(file){
   if(recognized)return [];
   return readImportFileBeforeTimingFix(file);
 };
+/* V7.3 — ranking mobile sem deslize lateral e kart identificado com #. */
+const renderPilotMobileRanking=render;
+render=function(){renderPilotMobileRanking();if(page==='dashboard'){document.querySelectorAll('.content .telemetry-table .kart-class-stack .kart').forEach(kart=>{if(!kart.textContent.trim().startsWith('#'))kart.textContent='#'+kart.textContent.trim()});return}if(page!=='ranking')return;let table=document.querySelector('.content>.card.tablewrap>.table');if(!table)return;table.classList.add('pilot-ranking-table');table.closest('.tablewrap')?.classList.add('pilot-ranking-wrap');table.querySelectorAll('tbody tr').forEach(row=>{let kart=row.cells[1]?.querySelector('.meta');if(kart)kart.textContent=kart.textContent.replace(/^\s*Kart\s*/i,'#')})};
+render();

@@ -209,3 +209,13 @@ body{background:radial-gradient(ellipse at 50% -25%,rgba(33,105,57,.19),transpar
 select{color-scheme:dark}
 select option,select optgroup{background:#050807!important;color:#f4f7f4!important}
 select option:checked{background:#174a2a!important;color:#ffffff!important}
+/* V7.3 — ranking de pilotos responsivo na largura do celular. */
+.pilot-ranking-table{width:100%;min-width:0!important;table-layout:fixed}
+.pilot-ranking-table td:first-child,.pilot-ranking-table th:first-child{width:8%;text-align:center}
+.pilot-ranking-table td:nth-child(2),.pilot-ranking-table th:nth-child(2){width:36%;white-space:normal}
+.pilot-ranking-table td:nth-child(3),.pilot-ranking-table th:nth-child(3){width:23%;white-space:nowrap}
+.pilot-ranking-table td:nth-child(4),.pilot-ranking-table th:nth-child(4){width:33%;white-space:normal}
+.pilot-ranking-table .meta{display:block;overflow-wrap:anywhere;font-size:9px;margin-top:2px}
+.pilot-ranking-table td:first-child,.pilot-ranking-table .meta{font-family:Inter,"SF Pro Text","SF Pro Display",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+.pilot-ranking-table td:nth-child(3) b{font-family:"SF Mono","Roboto Mono","JetBrains Mono",ui-monospace,monospace;font-variant-numeric:tabular-nums}
+@media(max-width:760px){.content>.card.tablewrap.pilot-ranking-wrap{width:100%;min-width:0;overflow-x:hidden;padding:3px}.pilot-ranking-table{width:100%!important;min-width:0!important;table-layout:fixed!important}.pilot-ranking-table th,.pilot-ranking-table td{padding:7px 4px!important;overflow-wrap:anywhere}.pilot-ranking-table th{font-size:7px;letter-spacing:.25px}.pilot-ranking-table td:first-child,.pilot-ranking-table th:first-child{width:8%}.pilot-ranking-table td:nth-child(2),.pilot-ranking-table th:nth-child(2){width:34%}.pilot-ranking-table td:nth-child(3),.pilot-ranking-table th:nth-child(3){width:24%}.pilot-ranking-table td:nth-child(4),.pilot-ranking-table th:nth-child(4){width:34%}.pilot-ranking-table td:nth-child(2)>b{font-size:10px;line-height:1.2}.pilot-ranking-table .meta{font-size:8px!important}.pilot-ranking-table td:nth-child(3) b{font-size:10px!important}}
