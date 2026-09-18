@@ -209,6 +209,8 @@ body{background:radial-gradient(ellipse at 50% -25%,rgba(33,105,57,.19),transpar
 select{color-scheme:dark}
 select option,select optgroup{background:#050807!important;color:#f4f7f4!important}
 select option:checked{background:#174a2a!important;color:#ffffff!important}
+.ranking-pilot-filters{grid-template-columns:repeat(2,minmax(220px,360px))!important}
+@media(max-width:760px){.ranking-pilot-filters{grid-template-columns:1fr!important}.ranking-pilot-filters .field{grid-column:auto!important}}
 /* V7.3 — ranking de pilotos responsivo na largura do celular. */
 .pilot-ranking-table{width:100%;min-width:0!important;table-layout:fixed}
 .pilot-ranking-table td:first-child,.pilot-ranking-table th:first-child{width:8%;text-align:center}
