@@ -1,17 +1,12 @@
 {
-  "id": "./",
-  "name": "CKA Kart — Campeonato 2026",
-  "short_name": "CKA Kart",
-  "description": "Classificação, equipes, pilotos e resultados do campeonato CKA.",
+  "name": "KartStats Telemetria",
+  "short_name": "KartStats",
   "start_url": "./",
-  "scope": "./",
   "display": "standalone",
-  "orientation": "portrait-primary",
-  "background_color": "#090b10",
-  "theme_color": "#090b10",
+  "background_color": "#07090d",
+  "theme_color": "#0d1016",
+  "description": "Análise estatística de karts de aluguel",
   "icons": [
-    { "src": "assets/pwa-icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
-    { "src": "assets/pwa-icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
-    { "src": "assets/pwa-icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+    {"src":"assets/kartstats-logo.png","sizes":"716x716","type":"image/png","purpose":"any maskable"}
   ]
 }
